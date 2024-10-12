@@ -9,26 +9,26 @@ class Product:
 
 
 class Shop:
-    __file_name = 'product.txt'
+
+    def __init__(self):
+        self.__file_name = 'product.txt'
 
     def get_products(self):
-        from pprint import pprint
         file = open(self.__file_name, 'r')
-        file_1 = pprint(file.readlines())
+        file_1 = file.readlines()
         file.close()
         return file_1
 
     def add(self, *products):
         file = open(self.__file_name, 'r')
         f = file.readlines()
-        file.close()
         for product in products:
             if str(product)+"\n" in f:
                 print(f'продукт {product} уже есть в магазине')
             else:
                 file = open(self.__file_name, 'a')
                 file.write(str(product) + '\n')
-                file.close()
+        file.close()
         return
 
 
